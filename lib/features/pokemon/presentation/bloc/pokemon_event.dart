@@ -6,3 +6,5 @@ abstract class PokemonEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetListPokemonsEvent extends PokemonEvent {}
