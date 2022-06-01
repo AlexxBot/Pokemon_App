@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/core/widgets/snack_widget.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon.dart';
 import 'package:pokemon_app/features/pokemon/presentation/bloc/pokemon_bloc.dart';
+import 'package:pokemon_app/features/pokemon/presentation/widgets/pokemon_list_widget.dart';
 
-class PokemonListPage extends StatefulWidget {
-  const PokemonListPage({Key? key}) : super(key: key);
+class PokemonPage extends StatefulWidget {
+  const PokemonPage({Key? key}) : super(key: key);
 
   @override
-  State<PokemonListPage> createState() => _PokemonListPageState();
+  State<PokemonPage> createState() => _PokemonPageState();
 }
 
-class _PokemonListPageState extends State<PokemonListPage> {
+class _PokemonPageState extends State<PokemonPage> {
   late final PokemonBloc pokemonBloc;
   late List<Pokemon> pokemons;
 
@@ -23,9 +24,14 @@ class _PokemonListPageState extends State<PokemonListPage> {
     pokemonBloc.add(GetListPokemonsEvent());
   }
 
+  Future<void> _reloadList() async {
+    pokemonBloc.add(GetListPokemonsEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Pokemons')),
       body: SafeArea(
           child: BlocListener<PokemonBloc, PokemonState>(
         bloc: pokemonBloc,
@@ -39,26 +45,15 @@ class _PokemonListPageState extends State<PokemonListPage> {
         },
         child: BlocBuilder<PokemonBloc, PokemonState>(
           builder: ((context, state) {
-            if (state is LoadingState) return const CircularProgressIndicator();
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(pokemons[index].name),
-                );
-              },
-              itemCount: pokemons.length,
-            );
+            if (state is LoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return RefreshIndicator(
+                onRefresh: _reloadList,
+                child: PokemonListWidget(pokemons: pokemons));
           }),
         ),
-      ) /* SingleChildScrollView(
-            child: Column(children: [
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.greenAccent,
-          )
-        ])), */
-          ),
+      )),
     );
   }
 }
