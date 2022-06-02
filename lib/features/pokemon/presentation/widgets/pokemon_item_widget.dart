@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/core/widgets/image_widget.dart';
+import 'package:pokemon_app/core/widgets/svg_widget.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_form.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/sprites.dart';
@@ -12,8 +13,10 @@ class PokemonItemWidget extends StatelessWidget {
   const PokemonItemWidget({Key? key, required this.pokemon}) : super(key: key);
 
   Future<void> _showDetail(BuildContext context) async {
-    await Navigator.push(context,
-        MaterialPageRoute(builder: (_) => PokemonDetailPage(url: pokemon.url)));
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (_) => PokemonDetailPage(detail: pokemon.detail!)));
   }
 
   @override
@@ -21,12 +24,21 @@ class PokemonItemWidget extends StatelessWidget {
     return InkWell(
         onTap: () => _showDetail(context),
         child: Stack(children: [
-          ImageWidget(
+          /* ImageWidget(
             height: 150,
             width: 150,
             imageUrl: pokemon.detail!.sprites!.frontDefault,
+          ), */
+          SvgWidget(
+            height: 150,
+            width: 150,
+            imageUrl: pokemon.detail!.sprites!.dreamWorld,
           ),
-          Text(pokemon.name),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(pokemon.name),
+          )
+
           //Text(widget.pokemon.url)
         ]));
   }

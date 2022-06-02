@@ -24,5 +24,6 @@ const fontWeightBold = FontWeight.bold;
 const fontWeightNormal = FontWeight.normal;
 
 const double borderRadiusModal = 15;
+const double borderRadiusTabBar = 30;
 const double borderRadiusInput = 10;
 const double borderRadiusFontSize = 5;

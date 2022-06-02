@@ -11,12 +11,13 @@ class PokemonListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scrollbar(
       child: GridView.builder(
-          cacheExtent: 10000,
+          cacheExtent: 100,
           shrinkWrap: true,
           padding: const EdgeInsets.symmetric(
               vertical: vspaceM, horizontal: hspaceM),
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 150,
+              mainAxisExtent: 200,
+              maxCrossAxisExtent: 200,
               childAspectRatio: 3 / 3,
               crossAxisSpacing: 20,
               mainAxisSpacing: 10),

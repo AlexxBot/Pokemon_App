@@ -7,6 +7,7 @@ class Sprites {
   final String? frontFemale;
   final String? frontShiny;
   final String? frontShinyFemale;
+  final String? dreamWorld;
 
   const Sprites(
       {this.backDefault,
@@ -16,9 +17,13 @@ class Sprites {
       this.frontDefault,
       this.frontFemale,
       this.frontShiny,
-      this.frontShinyFemale});
+      this.frontShinyFemale,
+      this.dreamWorld});
 
   factory Sprites.fromJson(Map<dynamic, dynamic> json) {
+    final dreamWordMap =
+        (json['other'] as Map<dynamic, dynamic>)['dream_world'];
+    final svgImage = (dreamWordMap as Map<dynamic, dynamic>)['front_default'];
     return Sprites(
         backDefault: json['back_default'],
         backFemale: json['back_female'],
@@ -27,6 +32,7 @@ class Sprites {
         frontDefault: json['front_default'],
         frontFemale: json['front_female'],
         frontShiny: json['front_shiny'],
-        frontShinyFemale: json['front_shiny_female']);
+        frontShinyFemale: json['front_shiny_female'],
+        dreamWorld: svgImage);
   }
 }
