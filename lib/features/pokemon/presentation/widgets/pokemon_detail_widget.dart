@@ -4,6 +4,7 @@ import 'package:pokemon_app/core/widgets/tab_header_widget.dart';
 import 'package:pokemon_app/core/widgets/text_pair_widget.dart';
 import 'package:pokemon_app/core/widgets/text_widget.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_detail.dart';
+import 'package:pokemon_app/features/pokemon/domain/entities/types.dart';
 import 'package:pokemon_app/features/pokemon/presentation/widgets/Detail/about_widget.dart';
 import 'package:pokemon_app/features/pokemon/presentation/widgets/Detail/forms_widget.dart';
 import 'package:pokemon_app/features/pokemon/presentation/widgets/Detail/moves_widget.dart';
@@ -47,24 +48,36 @@ class _PokemonDetailWidgetState extends State<PokemonDetailWidget>
           child: TabBar(
               //isScrollable: true,
               controller: _tabController,
-              unselectedLabelColor: Colors.black,
+              unselectedLabelColor: Theme.of(context).primaryColor,
               indicatorWeight: 3.0,
-              indicatorColor: Colors.black,
-              labelColor: Colors.black,
-              tabs: const [
-                TabHeaderWidget(title: 'About'),
-                TabHeaderWidget(title: 'Stats'),
-                TabHeaderWidget(title: 'Forms'),
-                TabHeaderWidget(title: 'Moves')
+              indicatorColor: Theme.of(context).primaryColor,
+              labelColor: Theme.of(context).primaryColor,
+              tabs: [
+                TabHeaderWidget(
+                    title: 'About', color: Theme.of(context).primaryColor),
+                TabHeaderWidget(
+                    title: 'Stats', color: Theme.of(context).primaryColor),
+                TabHeaderWidget(
+                    title: 'Forms', color: Theme.of(context).primaryColor),
+                TabHeaderWidget(
+                    title: 'Moves', color: Theme.of(context).primaryColor)
               ]),
         ),
         Expanded(
           child: TabBarView(
             children: [
               AboutWidget(detail: widget.detail),
-              StatsWidget(stats: widget.detail.stats!),
+              StatsWidget(
+                  stats: widget.detail.stats!,
+                  color: TypesColors.getColor(
+                    widget.detail.types[0],
+                  )),
               FormsWidget(sprites: widget.detail.sprites!),
-              MovesWidget(moves: widget.detail.moves!)
+              MovesWidget(
+                  moves: widget.detail.moves!,
+                  color: TypesColors.getColor(
+                    widget.detail.types[0],
+                  ))
             ],
             controller: _tabController,
           ),

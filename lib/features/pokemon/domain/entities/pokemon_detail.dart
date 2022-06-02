@@ -7,6 +7,8 @@ class PokemonDetail {
   final String name;
   final int? height;
   final int? weight;
+  final int? baseExperience;
+  final String? specie;
   final List<String> abilities;
   final List<String> types;
   final List<Move>? moves;
@@ -16,6 +18,8 @@ class PokemonDetail {
       {required this.name,
       this.height,
       this.weight,
+      this.baseExperience,
+      this.specie,
       this.abilities = const [],
       this.types = const [],
       this.moves,
@@ -27,6 +31,8 @@ class PokemonDetail {
         name: json['name'].toString(),
         height: int.tryParse(json['height'].toString()),
         weight: int.tryParse(json['weight'].toString()),
+        baseExperience: int.tryParse(json['base_experience'].toString()),
+        specie: (json['species'] as Map<dynamic, dynamic>)['name'].toString(),
         abilities: (json['abilities'] as List)
             .map((ability) =>
                 (ability['ability'] as Map<dynamic, dynamic>)['name']

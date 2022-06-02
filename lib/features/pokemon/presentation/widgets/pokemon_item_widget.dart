@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
+import 'package:pokemon_app/core/widgets/chip_widget.dart';
 import 'package:pokemon_app/core/widgets/image_widget.dart';
 import 'package:pokemon_app/core/widgets/svg_widget.dart';
 import 'package:pokemon_app/core/widgets/text_widget.dart';
@@ -69,20 +70,10 @@ class PokemonItemWidget extends StatelessWidget {
               child: Wrap(
                 direction: Axis.vertical,
                 children: pokemon.detail!.types
-                    .map<Container>((type) => Container(
-                          decoration: BoxDecoration(
-                              color: TypesColors.getColor(
-                                  pokemon.detail!.types[0]),
-                              borderRadius:
-                                  BorderRadius.circular(borderRadiusInput)),
-                          margin: const EdgeInsets.symmetric(
-                              vertical: vspaceS / 2, horizontal: vspaceS / 2),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: vspaceS / 2, horizontal: vspaceS),
-                          child: TextWidget(
-                            type,
-                            fontSize: fontSizeS - 2,
-                          ),
+                    .map<ChipWidget>((type) => ChipWidget(
+                          text: type,
+                          color: TypesColors.getColor(pokemon.detail!.types[0]),
+                          fontSize: fontSizeS - 2,
                         ))
                     .toList(),
               ),
