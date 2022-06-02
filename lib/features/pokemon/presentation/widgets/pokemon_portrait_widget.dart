@@ -35,8 +35,7 @@ class PokemonPortratWidget extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.center,
-          child: SvgWidget(
-              height: 200, imageUrl: detail.sprites!.dreamWorld!, width: 200),
+          child: SvgWidget(height: 200, imageUrl: detail.sprites!.dreamWorld!),
         ),
       ]),
     );

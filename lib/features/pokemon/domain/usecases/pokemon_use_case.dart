@@ -2,12 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:pokemon_app/core/error/failures.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_detail.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_form.dart';
-
-import '../entities/pokemon.dart';
+import 'package:pokemon_app/features/pokemon/domain/entities/pokemons.dart';
 import '../repository/pokemon_repository.dart';
 
 abstract class UseCase {
-  Future<Either<Failure, List<Pokemon>>> getList();
+  Future<Either<Failure, Pokemons>> getList(String? url);
   Future<Either<Failure, PokemonDetail>> getPokemon(String url);
   Future<Either<Failure, PokemonForm>> getPokemonForm(String url);
 }
@@ -18,8 +17,8 @@ class PokemonUseCase implements UseCase {
   PokemonUseCase({required this.repository});
 
   @override
-  Future<Either<Failure, List<Pokemon>>> getList() async {
-    return await repository.getList();
+  Future<Either<Failure, Pokemons>> getList(String? url) async {
+    return await repository.getList(url);
   }
 
   @override

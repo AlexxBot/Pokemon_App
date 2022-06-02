@@ -17,7 +17,7 @@ class LoadingImageState extends PokemonState {
 }
 
 class PokemonsListedState extends PokemonState {
-  final List<Pokemon> pokemons;
+  final Pokemons pokemons;
   const PokemonsListedState({required this.pokemons});
 }
 
