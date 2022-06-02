@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_detail.dart';
 import 'package:pokemon_app/features/pokemon/presentation/bloc/pokemon_bloc.dart';
+import 'package:pokemon_app/features/pokemon/presentation/widgets/pokemon_detail_widget.dart';
+import 'package:pokemon_app/features/pokemon/presentation/widgets/pokemon_portrait_widget.dart';
 
 class PokemonDetailPage extends StatefulWidget {
-  final String url;
-  const PokemonDetailPage({Key? key, required this.url}) : super(key: key);
+  final PokemonDetail detail;
+  const PokemonDetailPage({Key? key, required this.detail}) : super(key: key);
 
   @override
   State<PokemonDetailPage> createState() => _PokemonDetailPageState();
@@ -21,39 +23,27 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
     super.initState();
     pokemonBloc = BlocProvider.of<PokemonBloc>(context);
     pokemon = PokemonDetail(name: '');
-    pokemonBloc.add(GetPokemonDetailEvent(pokemonUrl: widget.url));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-                vertical: vspaceM, horizontal: hspaceM),
-            child: BlocListener<PokemonBloc, PokemonState>(
-              bloc: pokemonBloc,
-              listener: ((context, state) {
-                if (state is PokemonRetrivedState) {
-                  pokemon = state.pokemon;
-                }
-              }),
-              child: BlocBuilder<PokemonBloc, PokemonState>(
-                bloc: pokemonBloc,
-                builder: (context, state) {
-                  if (state is LoadingState) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  return Column(children: [
-                    Row(children: [
-                      Chip(label: Text('Heigth: ${pokemon.height ?? 0}')),
-                      Chip(label: Text('Weigth: ${pokemon.weight ?? 0}'))
-                    ]),
-                  ]);
-                },
-              ),
-            )),
-      ),
-    );
+        body: SafeArea(
+      child: Container(
+          color: Colors.greenAccent,
+          /* padding: const EdgeInsets.symmetric(
+              vertical: vspaceM, horizontal: hspaceM), */
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              PokemonPortratWidget(detail: widget.detail),
+              Expanded(
+                child: PokemonDetailWidget(
+                  detail: widget.detail,
+                ),
+              )
+            ],
+          )),
+    ));
   }
 }
