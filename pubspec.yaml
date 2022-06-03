@@ -49,7 +49,7 @@ dev_dependencies:
 
 flutter_icons:
 
-  image_path: "assets/images/pok.png"
+  image_path: "assets/images/pokeball.png"
   android: true
   ios: true
 

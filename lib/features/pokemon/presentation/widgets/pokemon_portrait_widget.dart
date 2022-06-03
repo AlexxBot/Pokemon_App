@@ -29,7 +29,7 @@ class PokemonPortratWidget extends StatelessWidget {
               children: detail.types
                   .map<ChipWidget>((type) => ChipWidget(
                         text: type,
-                        fontSize: fontSizeM,
+                        fontSize: fontSizeL,
                         color: TypesColors.getColor(detail.types[0]),
                         vPadding: vspaceS,
                         hPadding: vspaceM,

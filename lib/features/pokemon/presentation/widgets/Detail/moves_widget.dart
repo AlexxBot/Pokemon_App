@@ -28,6 +28,7 @@ class MovesWidget extends StatelessWidget {
                       text: move.name ?? '',
                       fontSize: fontSizeM,
                       color: color,
+                      textColor: Colors.black,
                     ))
                 .toList(),
           )

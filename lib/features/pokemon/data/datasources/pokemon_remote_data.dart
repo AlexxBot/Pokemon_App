@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:isolate';
 
 import 'package:http/http.dart' as http;
 import 'package:pokemon_app/core/error/exceptions.dart';
@@ -36,7 +37,7 @@ class PokemonRemoteDataImple extends PokemonRemoteData {
           .toList(); */
       final n = pokemons.list.length;
       for (int i = 0; i < n; i++) {
-        final detailResponse = await client
+        /* final detailResponse = await client
             .get(
               Uri.parse(pokemons.list[i].url),
               headers: sl<Headers>().headers,
@@ -47,7 +48,14 @@ class PokemonRemoteDataImple extends PokemonRemoteData {
           final pokemonJson = jsonDecode(detailResponse.body);
           final pokemonDetail = PokemonDetail.fromJson(pokemonJson);
           pokemons.list[i].detail = pokemonDetail;
-        }
+        } */
+        pokemons.list[i].detail = await getPokemon(pokemons.list[i].url);
+        /* ReceivePort port = ReceivePort();
+        final isolate =
+            await Isolate.spawn<String>(getPokemon, pokemons.list[i].url);
+        final detail = await port.first;
+        isolate.kill(priority: Isolate.immediate);
+        pokemons.list[i].detail = detail; */
       }
       return pokemons;
     } else {
@@ -67,9 +75,10 @@ class PokemonRemoteDataImple extends PokemonRemoteData {
 
       final pokemon = PokemonDetail.fromJson(pokemonJson);
       return pokemon;
-    } else {
+    } /* else {
       throw ApiResponseException(statusCode: response.statusCode);
-    }
+    } */
+    return PokemonDetail(name: '');
   }
 
   @override

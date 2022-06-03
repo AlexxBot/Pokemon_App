@@ -11,8 +11,8 @@ class Pokemons {
   factory Pokemons.fromJson(Map<dynamic, dynamic> json) {
     return Pokemons(
         count: int.parse(json['count'].toString()),
-        next: json['next'].toString(),
-        previous: json['previous'].toString(),
+        next: json['next'],
+        previous: json['previous'],
         list: (json['results'] as List)
             .map<Pokemon>((pokemon) => Pokemon.fromJson(pokemon))
             .toList());

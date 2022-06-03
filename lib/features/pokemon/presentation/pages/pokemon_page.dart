@@ -1,6 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_app/core/global/size_constants.dart';
+import 'package:pokemon_app/core/global/theme_data.dart';
+import 'package:pokemon_app/core/widgets/chip_widget.dart';
 import 'package:pokemon_app/core/widgets/snack_widget.dart';
+import 'package:pokemon_app/core/widgets/text_widget.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemons.dart';
 import 'package:pokemon_app/features/pokemon/presentation/bloc/pokemon_bloc.dart';
@@ -19,6 +24,7 @@ class _PokemonPageState extends State<PokemonPage> {
   late Pokemons pokemons;
   late int count;
   late String? url;
+  late bool getAll;
 
   final _scrollController = ScrollController();
 
@@ -28,6 +34,7 @@ class _PokemonPageState extends State<PokemonPage> {
     pokemonBloc = BlocProvider.of<PokemonBloc>(context);
     list = [];
     count = 0;
+    getAll = false;
     /* pokemonBloc.add(const GetListPokemonsEvent()); */
     _reloadList();
 
@@ -50,10 +57,39 @@ class _PokemonPageState extends State<PokemonPage> {
     }
   }
 
+  void _getAllData() {
+    getAll = true;
+    pokemonBloc.add(GetListPokemonsEvent(url: url));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Pokemons')),
+      appBar: AppBar(
+        title: const Text('Pokedex'),
+        leading: BlocBuilder<PokemonBloc, PokemonState>(
+          builder: (context, state) {
+            if (getAll) {
+              return const CupertinoActivityIndicator();
+            }
+            return Padding(
+              padding: EdgeInsets.only(
+                  top: vspaceXL, bottom: vspaceL, left: hspaceM),
+              child: RawMaterialButton(
+                padding: EdgeInsets.symmetric(horizontal: 2),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(borderRadiusInput)),
+                fillColor: primaryColor,
+                child: TextWidget(
+                  'Get All',
+                  fontSize: fontSizeS,
+                ),
+                onPressed: _getAllData,
+              ),
+            );
+          },
+        ),
+      ),
       body: SafeArea(
           child: BlocListener<PokemonBloc, PokemonState>(
         bloc: pokemonBloc,
@@ -65,6 +101,14 @@ class _PokemonPageState extends State<PokemonPage> {
             list.addAll(state.pokemons.list);
             count = state.pokemons.count;
             url = state.pokemons.next;
+            if (getAll && url != null) {
+              _getAllData();
+            } else {
+              if (getAll) {
+                SnackWidget.showMessage(context, 'All Pokemos were retrived');
+              }
+              getAll = false;
+            }
           }
         },
         child: BlocBuilder<PokemonBloc, PokemonState>(

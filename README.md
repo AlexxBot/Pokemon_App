@@ -1,6 +1,6 @@
-# pokemon_app
+# Pokedex App
 
-A new Flutter project.
+This is an app of that display pokemons
 
 ## Getting Started
 

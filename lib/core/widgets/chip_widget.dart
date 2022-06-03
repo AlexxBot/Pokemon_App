@@ -8,13 +8,15 @@ class ChipWidget extends StatelessWidget {
   final String text;
   final double vPadding;
   final double hPadding;
+  final Color? textColor;
   const ChipWidget(
       {Key? key,
       this.color,
       this.fontSize = fontSizeS,
       required this.text,
       this.vPadding = vspaceS / 2,
-      this.hPadding = hspaceS})
+      this.hPadding = hspaceS,
+      this.textColor})
       : super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class ChipWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: vPadding, horizontal: hPadding),
       child: TextWidget(
         text,
+        color: textColor,
         fontSize: fontSize,
       ),
     );
