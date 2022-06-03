@@ -4,7 +4,8 @@ This is an app that display pokemons with their details like a pokedex
 
 ## Getting Started
 
-This app was made with flutter sdk
+- This app was made with flutter sdk
+- This app is using https://pokeapi.co/ to get the data
 
 ## Intructions to setup flutter environment
 
