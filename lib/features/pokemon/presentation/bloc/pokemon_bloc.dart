@@ -19,21 +19,21 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
             (pokemons) => emit(PokemonsListedState(pokemons: pokemons)));
       }
 
-      if (event is GetPokemonDetailEvent) {
+      /* if (event is GetPokemonDetailEvent) {
         emit(LoadingState());
         final response = await pokemonUseCase.getPokemon(event.pokemonUrl);
         response.fold((failure) => emit(ErrorState(message: failure.message)),
             (pokemon) => emit(PokemonRetrivedState(pokemon: pokemon)));
-      }
+      } */
 
-      if (event is GetPokemonFormEvent) {
+      /* if (event is GetPokemonFormEvent) {
         emit(LoadingImageState(imageUrl: event.pokemonUrl));
         final response = await pokemonUseCase.getPokemonForm(event.pokemonUrl);
         response.fold(
             (failure) => emit(ErrorState(message: failure.message)),
             (pokemonForm) => emit(PokemonFormRetrivedState(
                 url: event.pokemonUrl, pokemonForm: pokemonForm)));
-      }
+      } */
     });
   }
 }

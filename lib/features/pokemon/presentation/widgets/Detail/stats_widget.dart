@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
 import 'package:pokemon_app/core/widgets/stat_widget.dart';
-import 'package:pokemon_app/core/widgets/text_pair_widget.dart';
-import 'package:pokemon_app/core/widgets/text_widget.dart';
-import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_detail.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/stat.dart';
 
 class StatsWidget extends StatelessWidget {

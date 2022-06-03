@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
 import 'package:pokemon_app/core/widgets/chip_widget.dart';
 import 'package:pokemon_app/core/widgets/svg_widget.dart';
-import 'package:pokemon_app/core/widgets/text_widget.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_detail.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/types.dart';
 
@@ -17,7 +16,6 @@ class PokemonPortratWidget extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           opacity: 0.1,
-          //fit: BoxFit.cover,
           fit: BoxFit.fitHeight,
           image: AssetImage('assets/images/pok.png'),
         ),
@@ -41,7 +39,6 @@ class PokemonPortratWidget extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: SvgWidget(
-                  //width: 100,
                   height: MediaQuery.of(context).size.width - 120,
                   imageUrl: detail.sprites!.dreamWorld!),
             ),

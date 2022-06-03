@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
 import 'package:pokemon_app/core/widgets/image_widget.dart';
-import 'package:pokemon_app/core/widgets/text_pair_widget.dart';
 import 'package:pokemon_app/core/widgets/text_widget.dart';
-import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_detail.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/sprites.dart';
 
 class FormsWidget extends StatelessWidget {
@@ -101,56 +99,6 @@ class FormsWidget extends StatelessWidget {
               ],
             )
           ],
-        ) /* GridView(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              mainAxisExtent: 150,
-              maxCrossAxisExtent: 150,
-              childAspectRatio: 3 / 3,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 10),
-          children: [
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.backDefault,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.backFemale,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.backShiny,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.backShinyFemale,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.frontDefault,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.frontFemale,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.frontShiny,
-            ),
-            ImageWidget(
-              height: 150,
-              width: 150,
-              imageUrl: sprites.frontShinyFemale,
-            ),
-          ],
-        ) */
-        );
+        ));
   }
 }

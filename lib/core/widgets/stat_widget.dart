@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
-import 'package:pokemon_app/core/utils/regular_expresion.dart';
 import 'package:pokemon_app/core/widgets/text_widget.dart';
 
 class StatWidget extends StatelessWidget {

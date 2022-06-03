@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
 import 'package:pokemon_app/core/widgets/chip_widget.dart';
-import 'package:pokemon_app/core/widgets/image_widget.dart';
 import 'package:pokemon_app/core/widgets/svg_widget.dart';
 import 'package:pokemon_app/core/widgets/text_widget.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/pokemon.dart';
-import 'package:pokemon_app/features/pokemon/domain/entities/pokemon_form.dart';
-import 'package:pokemon_app/features/pokemon/domain/entities/sprites.dart';
 import 'package:pokemon_app/features/pokemon/domain/entities/types.dart';
-import 'package:pokemon_app/features/pokemon/presentation/bloc/pokemon_bloc.dart';
 import 'package:pokemon_app/features/pokemon/presentation/pages/pokemon_detail_page.dart';
 
 class PokemonItemWidget extends StatelessWidget {
@@ -51,10 +46,7 @@ class PokemonItemWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(vspaceM),
                 child: SvgWidget(
-                  //width: 100,
                   height: 150,
-                  //width: auto,
-                  //type: pokemon.detail!.types[0],
                   imageUrl: pokemon.detail!.sprites!.dreamWorld,
                 ),
               ),
@@ -79,8 +71,6 @@ class PokemonItemWidget extends StatelessWidget {
                     .toList(),
               ),
             )
-
-            //Text(widget.pokemon.url)
           ]),
         ));
   }

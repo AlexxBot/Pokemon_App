@@ -11,14 +11,14 @@ class PokemonInitial extends PokemonState {}
 
 class LoadingState extends PokemonState {}
 
-class LoadingImageState extends PokemonState {
-  final String imageUrl;
-  const LoadingImageState({required this.imageUrl});
-}
-
 class PokemonsListedState extends PokemonState {
   final Pokemons pokemons;
   const PokemonsListedState({required this.pokemons});
+}
+
+/* class LoadingImageState extends PokemonState {
+  final String imageUrl;
+  const LoadingImageState({required this.imageUrl});
 }
 
 class PokemonRetrivedState extends PokemonState {
@@ -31,7 +31,7 @@ class PokemonFormRetrivedState extends PokemonState {
   final PokemonForm pokemonForm;
   const PokemonFormRetrivedState(
       {required this.url, required this.pokemonForm});
-}
+} */
 
 class ErrorState extends PokemonState {
   final String message;

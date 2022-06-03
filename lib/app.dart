@@ -12,9 +12,6 @@ class PokemonApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pokemon App',
-      /* theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ), */
       theme: context.watch<ThemeProvider>().getTheme(),
       onGenerateRoute: RouteGenerator.generateRoute,
     );

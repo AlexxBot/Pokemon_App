@@ -13,8 +13,6 @@ class RouteGenerator {
     switch (settings.name) {
       case pokemonPage:
         return MaterialPageRoute(builder: (_) => const PokemonPage());
-      /* case pokemonDetailPage:
-        return MaterialPageRoute(builder: (_) => const PokemonDetailPage()); */
       default:
         return MaterialPageRoute(builder: (_) => const PokemonPage());
     }
