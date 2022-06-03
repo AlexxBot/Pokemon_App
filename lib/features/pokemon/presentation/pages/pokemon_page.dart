@@ -67,7 +67,7 @@ class _PokemonPageState extends State<PokemonPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pokedex'),
-        leading: BlocBuilder<PokemonBloc, PokemonState>(
+        /* leading: BlocBuilder<PokemonBloc, PokemonState>(
           builder: (context, state) {
             if (getAll) {
               return const CupertinoActivityIndicator();
@@ -88,7 +88,7 @@ class _PokemonPageState extends State<PokemonPage> {
               ),
             );
           },
-        ),
+        ), */
       ),
       body: SafeArea(
           child: BlocListener<PokemonBloc, PokemonState>(

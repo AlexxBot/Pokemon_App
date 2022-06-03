@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/core/global/size_constants.dart';
 import 'package:pokemon_app/core/utils/regular_expresion.dart';
@@ -45,6 +46,14 @@ class StatWidget extends StatelessWidget {
                 max: max * 1.0,
                 value: value,
                 onChanged: (value) => {}),
+            /* CupertinoSlider(
+                //inactiveColor: Colors.grey,
+                activeColor: color,
+                min: min * 1.0,
+                max: max * 1.0,
+                value: value,
+                onChanged: null,
+              ) */
           )
         ],
       ),
