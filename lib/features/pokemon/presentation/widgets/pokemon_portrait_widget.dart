@@ -18,7 +18,7 @@ class PokemonPortratWidget extends StatelessWidget {
         image: DecorationImage(
           opacity: 0.1,
           //fit: BoxFit.cover,
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.fitHeight,
           image: AssetImage('assets/images/pok.png'),
         ),
       ),
@@ -40,8 +40,10 @@ class PokemonPortratWidget extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.center,
-              child:
-                  SvgWidget(height: 200, imageUrl: detail.sprites!.dreamWorld!),
+              child: SvgWidget(
+                  //width: 100,
+                  height: MediaQuery.of(context).size.width - 120,
+                  imageUrl: detail.sprites!.dreamWorld!),
             ),
           ],
         ),
