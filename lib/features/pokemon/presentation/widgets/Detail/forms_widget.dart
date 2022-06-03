@@ -21,7 +21,7 @@ class FormsWidget extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: vspaceM),
               child: TextWidget(
-                'Male',
+                'Default',
                 color: Colors.black,
                 fontSize: fontSizeXL,
                 fontWeight: fontWeightBold,

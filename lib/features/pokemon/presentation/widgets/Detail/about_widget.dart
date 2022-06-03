@@ -18,8 +18,8 @@ class AboutWidget extends StatelessWidget {
       padding:
           const EdgeInsets.symmetric(vertical: vspaceL, horizontal: hspaceL),
       color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextPairWidget(name: 'Height', value: '$realHeigth cm'),
           TextPairWidget(name: 'Weight', value: '$realWeigth kg'),

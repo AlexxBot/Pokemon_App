@@ -14,7 +14,7 @@ class TabHeaderWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: vspaceM, horizontal: 0),
       child: TextWidget(
         title,
-        fontSize: fontSizeM,
+        fontSize: fontSizeL,
         color: color,
       ),
     );

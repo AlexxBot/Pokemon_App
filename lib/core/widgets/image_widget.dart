@@ -38,7 +38,7 @@ class _ImageWidgetState extends State<ImageWidget> {
       decoration: BoxDecoration(
           image: (widget.imageUrl != null && widget.imageUrl != '')
               ? DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(widget.imageUrl!))
+                  fit: BoxFit.fitWidth, image: NetworkImage(widget.imageUrl!))
               : const DecorationImage(
                   opacity: 0.1,
                   image: AssetImage('assets/images/pok.png'),
